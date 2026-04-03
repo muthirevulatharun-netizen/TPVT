@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Thanvitha 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff4b8b;
+            --secondary: #00d2ff;
+            --accent: #ff9a9e;
+            --bg-lite: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            --text-dark: #444;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            color: var(--text-dark);
+            background: var(--bg-lite);
+            height: 100vh;
+        }
+
+        /* 🔐 LOCK SCREEN */
+        #lock {
+            position: fixed; inset: 0;
+            background: #fffafa;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            z-index: 9999;
+        }
+        #lock h2 { color: var(--primary); margin-bottom: 10px; }
+        #lock input {
+            padding: 12px; border-radius: 10px; border: 2px solid #ffcad4;
+            text-align: center; font-size: 16px; width: 200px; outline: none;
+        }
+
+        /* 🌌 BACKGROUND ELEMENTS */
+        .heart, .confetti { position: absolute; pointer-events: none; }
+        
+        .heart {
+            width: 12px; height: 12px; background: var(--accent);
+            transform: rotate(45deg); animation: float 6s linear forwards;
+        }
+        .heart::before, .heart::after {
+            content: ""; position: absolute; width: 12px; height: 12px;
+            background: inherit; border-radius: 50%;
+        }
+        .heart::before { top: -6px; }
+        .heart::after { left: -6px; }
+
+        @keyframes float { to { transform: translateY(-120vh) rotate(45deg); opacity: 0; } }
+
+        /* 🌈 MAIN CARD */
+        .card {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%; max-width: 360px;
+            padding: 25px; border-radius: 30px;
+            text-align: center; box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        .card::before {
+            content: ""; position: absolute; inset: -3px;
+            border-radius: 32px;
+            background: linear-gradient(60deg, #ff9a9e, #fad0c4, #ffecd2, #a1c4fd, #c2e9fb);
+            background-size: 400%; animation: borderMove 10s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes borderMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+        /* ✨ NEW FRAME TRANSITION ✨ */
+        .section { 
+            display: none; 
+            min-height: 100px; 
+            margin-top: 15px; 
+            color: #555;
+            animation: slideUpFade 0.6s ease-out forwards; 
+        }
+
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            background: linear-gradient(90deg, var(--primary), #fb8da0);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-size: 24px; margin-bottom: 10px;
+        }
+
+        /* 🌟 NAME ANIMATION */
+        .name span {
+            display: inline-block; opacity: 0; font-size: 32px; font-weight: bold;
+            color: var(--primary);
+            animation: appear 0.6s forwards, heartbeat 1.5s infinite;
+        }
+        @keyframes appear { to { opacity: 1; transform: scale(1.1); } }
+        @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+        /* 💎 3D CUBE */
+        .cube-container { width: 140px; height: 140px; margin: 25px auto; perspective: 1000px; }
+        .cube { 
+            width: 100%; height: 100%; transform-style: preserve-3d; 
+            animation: rotateCube 12s linear infinite; 
+        }
+        .face {
+            position: absolute; width: 140px; height: 140px;
+            border: 4px solid white; border-radius: 10px;
+            object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .front  { transform: translateZ(70px); }
+        .back   { transform: rotateY(180deg) translateZ(70px); }
+        .right  { transform: rotateY(90deg) translateZ(70px); }
+        .left   { transform: rotateY(-90deg) translateZ(70px); }
+        .top    { transform: rotateX(90deg) translateZ(70px); }
+        .bottom { transform: rotateX(-90deg) translateZ(70px); }
+
+        @keyframes rotateCube { from { transform: rotateX(-15deg) rotateY(0); } to { transform: rotateX(-15deg) rotateY(360deg); } }
+
+        #typing { font-style: italic; color: var(--primary); min-height: 60px; font-weight: 500; }
+        
+        button {
+            margin-top: 20px; padding: 12px 25px; border: none; border-radius: 25px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white; font-weight: bold; cursor: pointer; transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 75, 139, 0.3);
+        }
+        button:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(255, 75, 139, 0.4); }
+
+        .wishNames span {
+            display: inline-block; opacity: 0; color: var(--primary);
+            animation: fadeUp 0.8s forwards; margin: 0 5px; font-weight: bold;
+        }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+        .confetti { width: 8px; height: 8px; animation: fall 3s linear forwards; }
+        @keyframes fall { to { transform: translateY(100vh); opacity: 0; } }
+
+    </style>
+</head>
+<body>
+
+    <div id="lock">
+        <h2>💖 SURPRISE FOR THANVITHA 💖</h2>
+        <p style="color:#888;">💭 : HAPPY BIRTHDAY TO U </p>
+        <input type="text" id="pass" placeholder="MAGGI">
+        <button onclick="unlock()">Unlock Surprise ✨</button>
+    </div>
+
+    <audio id="music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="card">
+        <h2>✨ HAPPY BIRTHDAY ✨</h2>
+        <div class="name" id="nameDisplay"></div>
+
+        <div id="s1" class="section">
+            <p>🌟 Today is all about you! 🌟</p>
+            <p>You make every day brighter just by being in it.</p>
+        </div>
+
+        <div id="s2" class="section">
+            <p>🌸The Heart of Our Group🌸</p>
+            <p>Having you in our group makes every moment happier and more special.</p>
+        </div>
+
+        <div id="s3" class="section">
+            <p id="typing"></p>
+        </div>
+
+        <div id="s4" class="section">
+            <div class="cube-container">
+                <div class="cube">
+                    <img src="photo1.jpg" class="face front">
+                    <img src="photo2.jpg" class="face back">
+                    <img src="photo3.jpg" class="face right">
+                    <img src="photo4.jpg" class="face left">
+                    <img src="photo5.jpg" class="face top">
+                    <img src="photo6.jpg" class="face bottom">
+                </div>
+            </div>
+            <p>✨ Memories that last forever ✨</p>
+        </div>
+
+        <div id="s5" class="section">
+            <p style="font-size: 14px; line-height: 1.6;">
+                <b>Happy Birthday, Thanvitha!</b><br>
+                May your year be filled with endless smiles, success, and love. Thank you for tolerating my madness! 😂<br><br>
+                ✨ Wishes by ✨<br>
+                <div id="wishNames" class="wishNames"></div>
+            </p>
+            <button onclick="location.reload()">Replay 🎀</button>
+        </div>
+
+        <button id="nextBtn" onclick="next()">Next ➡️</button>
+    </div>
+
+    <script>
+        const birthday = "VPT";
+        const name = "THANVITHA";
+        const wishers = ["VIGNESH", "POOJITHA", "THIRILOK"];
+        let currentStep = 1;
+
+        function unlock() {
+            const input = document.getElementById("pass").value.trim();
+            if (input === birthday) {
+                document.getElementById("lock").style.display = "none";
+                document.getElementById("music").play().catch(() => console.log("Music needs interaction"));
+                startSurprise();
+            } else {
+                alert("Incorrect code! Try your birthday 🎂");
+            }
+        }
+
+        function startSurprise() {
+            const box = document.getElementById("nameDisplay");
+            name.split("").forEach((char, i) => {
+                const span = document.createElement("span");
+                span.textContent = char;
+                span.style.animationDelay = `${i * 0.15}s`;
+                box.appendChild(span);
+            });
+            showSection();
+        }
+
+        function showSection() {
+            document.querySelectorAll(".section").forEach(s => s.style.display = "none");
+            const activeSection = document.getElementById(`s${currentStep}`);
+            activeSection.style.display = "block";
+            
+            if (currentStep === 3) typeEffect();
+            if (currentStep === 5) {
+                document.getElementById("nextBtn").style.display = "none";
+                startFinalCelebration();
+            }
+        }
+
+        function next() {
+            if (currentStep < 5) {
+                currentStep++;
+                showSection();
+            }
+        }
+
+        function typeEffect() {
+            const text = "Happy Birthday, Thanvitha! 💖 You are the strength and happiness of our group. Keep shining like the star you are! ✨";
+            let i = 0;
+            const box = document.getElementById("typing");
+            box.innerHTML = "";
+            const interval = setInterval(() => {
+                box.innerHTML += text[i];
+                i++;
+                if (i >= text.length) clearInterval(interval);
+            }, 40);
+        }
+
+        function startFinalCelebration() {
+            const nameBox = document.getElementById("wishNames");
+            nameBox.innerHTML = "";
+            wishers.forEach((n, i) => {
+                const s = document.createElement("span");
+                s.textContent = n + (i < wishers.length - 1 ? " • " : "");
+                s.style.animationDelay = `${i * 0.4}s`;
+                nameBox.appendChild(s);
+            });
+            setInterval(createConfetti, 300);
+        }
+
+        function createConfetti() {
+            const c = document.createElement("div");
+            c.className = "confetti";
+            c.style.left = Math.random() * 100 + "vw";
+            c.style.background = `hsl(${Math.random() * 360}, 100%, 75%)`;
+            c.style.width = Math.random() * 8 + 5 + "px";
+            c.style.height = c.style.width;
+            document.body.appendChild(c);
+            setTimeout(() => c.remove(), 3000);
+        }
+
+        setInterval(() => {
+            const h = document.createElement("div");
+            h.className = "heart";
+            h.style.left = Math.random() * 100 + "vw";
+            h.style.top = "100vh";
+            document.body.appendChild(h);
+            setTimeout(() => h.remove(), 6000);
+        }, 1000);
+    </script>
+</body>
+</html>
